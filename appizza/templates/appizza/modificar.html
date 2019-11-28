@@ -1,0 +1,65 @@
+{% extends 'appizza/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+
+<h1 class="fondo" > Modificar Pizza </h1>
+<nav class="container fondo">
+    <br>
+<form action="" id="pizzadd" method="POST" > 
+  {% csrf_token %}
+
+    <input type="hidden" name="txtid" id="txtid" value="{{ pi.id }}"  >
+
+  <label> Nombre de pizza </label>
+  <input type="text" name="txtNombrepizza" id="txtNombrepizza" value="{{ pi.nombre }}"> 
+  <br>
+
+  <label for=""> Ingredientes </label><br>
+  <label for=""> Quesos </label><br>
+  <input type="checkbox" name="cbxQueso_Parmesano" value="Queso Parmesano"> Queso Parmesano
+  <input type="checkbox" name="cbxQueso_Romano" value="Queso Romano"> Queso Romano
+  <input type="checkbox" name="cbxQueso_Mozzarella" value="Queso Mozzarella" > Queso Mozzarella<br>
+  <label for=""> Carnes </label><br>
+  <input type="checkbox" name="cbxCarne" value="Carne">Carne
+  <input type="checkbox" name="cbxPepperoni" value="Pepperoni"> Pepperoni
+  <input type="checkbox" name="cbxTocio" value="Tocino"> Tocino
+  <input type="checkbox" name="cbxJamon" value="Jamón" > Jamon <br>
+  <label for=""> Vegetales </label><br>
+  <input type="checkbox" name="cbxCebolla" value="Cebolla">Cebolla
+  <input type="checkbox" name="cbxTomate" value="Tomate"> Tomate
+  <input type="checkbox" name="cbxPimenton" value="Pimenton">Pimenton
+  <input type="checkbox" name="cbxAceitunas" value="Aceitunas" > Aceitunas
+
+  <br>
+  <label for=""> Tamaño </label>
+  
+  <select name="cbo" id="cbo">
+    <option value="">Seleccionar</option>
+    
+    {% for m in tamano %}
+    
+    <option>
+        {% if m.id == pi.tamano.id %}
+        {{'selected'}}
+        {% endif %}
+    
+        value="{{ m.id }}"> {{ m.descripcion }} 
+    </option>
+
+    {% endfor %}
+  </select>
+  <br>
+  <label> Precio </label>
+  <input type="number" name="txtPrecio" id="txtPrecio" value="{{ pi.precio }}"> 
+  <br>
+  <br>
+
+</nav>
+  <input class="btn btn-primary" type="submit" name="btnsub" id="btnsub" value="Modificar">
+  
+</form>
+<h2>{{ Mensaje }}</h2>
+</body>
+{% endblock %}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+        <head>
+  
+                {% block title %}<title>Pizza Steve</title>{% endblock %}
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                <!-- Fuentes -->
+                <link rel="stylesheet" href="https://use.typekit.net/hda2scl.css">
+                <!-- iconografia -->
+                <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+                <!-- Add additional CSS in static file -->
+                
+                {% load staticfiles %}
+                
+                <link rel="stylesheet" href="{% static 'appizza/css/styles.css' %}">
+              </head>
+              <nav>
+                  
+                <title>Pizza Steve Online</title>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'appizza/img/logo2.png' %}" style="width:150px; height:80px ;">
+        </a>
+        <div>   
+            <a class="nav-link" href="{% url 'index' %}">
+                    <h1>Pizza Steve</h1>         
+            </a>
+        </div>
+        <div class="collapse navbar-collapse " id="navright" href="{% url 'index' %}">
+            <a class="nav-link" href="{% url 'index' %}">
+                <ion-icon name="pizza"></ion-icon>
+            </a>
+        </div>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}"> Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pizzap' %}">Nuestra Carta</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="{% url 'formulario' %}">Crea tu Pizza</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listar_pizzas' %}"> Carrito
+                            <ion-icon name="cart"></ion-icon> </a>
+                </li>
+            </ul>
+        </div>
+   </nav>
+
+   {% if user.is_authenticated %}
+   <div class="fondo"> 
+        <th>
+           <tr><a href="#"><b> Hola {{user.username}} </b></a></tr>
+            <tr><a href="#"> / </a> </tr>
+            <tr><a href="{% url 'logout' %}"><tr><b> Logout </b></tr> </a> </tr>
+        </th>
+    </div>
+   {% else %}
+    <div class="fondo"> 
+        <th>
+           <tr><a href="{% url 'login' %}"><b> Login </b></a></tr>
+           <tr><a href="#"> / </a> </tr>
+            <tr><a href="{% url 'registro_usuario' %}"><tr><b> Registrate </b></tr> </a> </tr>
+        </th>
+    </div>
+    {% endif %}
+
+</nav>
+{% block content %}{% endblock %}
+
+              <footer id="footer" class="footer-1 py-2 ">
+                        <div class="main-footer widgets-dark typo-dark">
+                            <div class="container">
+                                <div class="row">
+                
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="widget subscribe no-box">
+                                            <h5 class="widget-title">Pizza Steve S.A<span></span></h5>
+                                            <p> Pizza Steve S.A. Oficinas de recursos humanos ubicada en av.Americo Vespucio Norte 500, Las condes. nos encargamos de entregar el mejor servicio desde 1946, llegando a chile en el año 2019  </p>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="widget no-box">
+                                            <h5 class="widget-title">Enlaces<span></span></h5>
+                                            <ul class="thumbnail-widget">
+                                                <li>
+                                                    <div class="thumb-content"><a href="{% url 'index' %}">Inicio</a></div>
+                                                </li>
+                                                <li>
+                                                    <div class="thumb-content"><a href="{% url 'pizzap' %}">Nuestro menu</a></div>
+                                                </li>
+                                                <li>
+                                                    <div class="thumb-content"><a href="{% url 'registro_usuario' %}">Registrate</a></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                                        <div class="widget no-box">
+                                            <h5 class="widget-title">Terminos y condiciones <span></span></h5>
+                                            <a class="btn" href="#." target="_blank">Términos y condiciones</a>
+                
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-xs-12 col-sm-6 col-md-3">
+                
+                                        <div class="widget no-box">
+                                            <h5 class="widget-title">Contactanos<span></span></h5>
+                
+                                            <p><a href="info@pizzasteve.com" title="glorythemes">info@pizzasteve.com</a></p>
+                                            <ul class="social-footer2">
+                                                <li class="ytube"><a title="youtube" target="_blank" href="https://www.youtube.com/">
+                                                        <ion-icon name="logo-youtube"></ion-icon>
+                                                </li>
+                                                <li class="fbk"><a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                                                        <ion-icon name="logo-facebook"></ion-icon>
+                                                    </a>
+                                                </li>
+                                                <li class="twit"><a href="https://twitter.com" target="_blank" title="Twitter">
+                                                        <ion-icon name="logo-twitter"></ion-icon>
+                                                </li>
+                                                <li class="insta"><a title="instagram" target="_blank" href="https://www.instagram.com/">
+                                                        <ion-icon name="logo-instagram"></ion-icon>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="footer-copyright ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 text-center" href="#">
+                                        <p href="#"> Para mas informacion acude a nuestra mesa central fono: (555) 800 500 5300 </p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
+</html>

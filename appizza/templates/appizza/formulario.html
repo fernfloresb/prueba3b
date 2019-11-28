@@ -1,0 +1,62 @@
+{% extends 'appizza/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <h1 class="fondo" > Ingresar Pizza </h1>
+<div class="container">
+
+<form action="" id="pizzadd" method="POST" > 
+  {% csrf_token %}
+    <label> Nombre de pizza </label>
+    <input type="text" name="txtNombrepizza" id="txtNombrepizza"> 
+  <br>
+    
+  <nav class="container">
+    <label for=""> Ingredientes </label><br>
+    <label for=""> Quesos </label><br>
+    <input type="checkbox" name="cbx1" id="cbx1" value="Queso Parmesano" > Queso Parmesano
+    <input type="checkbox" name="cbx2" id="cbx2" value="Queso Romano" > Queso Romano
+    <input type="checkbox" name="cbx3" id="cbx3" value="Queso Mozzarella" > Queso Mozzarella<br>
+    <label for=""> Carnes </label><br>
+    <input type="checkbox" name="cbxCarne" value="Carne">Carne
+    <input type="checkbox" name="cbxPepperoni" value="Pepperoni"> Pepperoni
+    <input type="checkbox" name="cbxTocio" value="Tocino"> Tocino
+    <input type="checkbox" name="cbxJamon" value="Jamón" > Jamon <br>
+    <label for=""> Vegetales </label><br>
+    <input type="checkbox" name="cbxCebolla" value="Cebolla">Cebolla
+    <input type="checkbox" name="cbxTomate" value="Tomate"> Tomate
+    <input type="checkbox" name="cbxPimenton" value="Pimenton">Pimenton
+    <input type="checkbox" name="cbxAceitunas" value="Aceitunas" > Aceitunas
+  </nav>
+
+  <!--
+    <select name="cboi" id="cboi">
+
+        <option value="">Seleccionar un ingrediente</option>
+
+        {% for i in ing %}
+        <option value="{{ i.id }}"> {{ i.nombre }} </option>
+        {% endfor %}
+      </select>
+  -->
+    <br>
+    <label for=""> Tamaño </label>
+    <select name="cbo" id="cbo">
+      <option value="">Seleccionar</option>
+
+      {% for m in tamano %}
+      <option value="{{ m.id }}"> {{ m.descripcion }} </option>
+      {% endfor %}
+      
+    </select>
+    <br>
+    <label> Precio </label>
+    <input type="number" name="txtPrecio" id="txtPrecio"> 
+    <br>
+  <input type="submit" name="btnsub" id="btnsub" value="Guardar">  
+</form>
+<h3>{{ mensaje }}</h2>
+</div>  
+</body>
+{% endblock %}

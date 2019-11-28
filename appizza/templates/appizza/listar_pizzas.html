@@ -1,0 +1,48 @@
+{% extends 'appizza/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Lista de pizzas </h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <tr>
+                    <th> Nombre       </th>
+                    <th> Ingredientes  </th>
+                    <th> Tamaño  </th>
+                    <th> Precio  </th>
+                    <th> opciones  </th>
+                </tr>
+                {% for a in pizzas %}
+                <tr>
+                    <td>{{ a.nombre }} </td>
+                    <td>{{ a.ingredientes.nombre }} </td>
+                    <td>{{ a.tamano }} </td>
+                    <td>{{ a.precio }}</td>
+                    <td>
+                        <a href="{% url 'eliminar_pizza' a.id %}" > <ion-icon name="trash"></ion-icon> </a>
+                        <a href="{% url 'modificar' a.id %}" > <ion-icon name="git-compare"></ion-icon> </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% if messages %}
+    {% for m in messages %}
+
+    <div>{{ m }}</div>
+
+    {% endfor %}
+
+{% endif %}
+
+</body>
+{% endblock %}
+

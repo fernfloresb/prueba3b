@@ -1,0 +1,53 @@
+h1{
+    font-family: cooper-black-std, serif;
+    color:#9ECA20;
+}
+h3{
+    font-family: cooper-black-std, serif;
+    background: black;    
+    
+}
+h4{
+    font-family: cooper-black-std, serif;
+    color:#9ECA20;
+}
+body{
+    background-color: #D6F295;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+
+.fondo{
+	background-color:black;
+    opacity:0.8;
+}
+
+.fondo2{
+    margin-top: 30%;
+}
+
+.footer-1{
+background: #A6B9FF;
+background-color: #A6B9FF;
+opacity:50%;
+}
+.centrar {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container{
+margin: 40px;
+}
+
+.imgb{
+border: 4px solid black; 
+}
+
+.lregistro{
+color:white;
+}

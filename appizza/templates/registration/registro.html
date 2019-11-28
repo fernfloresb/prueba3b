@@ -1,0 +1,23 @@
+{% extends 'appizza/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1 class="fondo "> Registro </h1>
+<div class="container">
+    <form action="" method="POST" >
+        {% csrf_token %}
+
+        
+            {{ form | crispy }}
+        
+
+        <th>
+        <button type="submit" > Registrar </button>
+        </th>
+
+    </form>
+    
+</div>
+
+{% endblock %}
